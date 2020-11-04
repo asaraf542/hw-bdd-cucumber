@@ -60,15 +60,18 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
 #   fail "Unimplemented"
   modified_list = rating_list.split(", ")
-  func = 0
-  if uncheck
-      func = uncheck
-  else
-      func = check
-  end
+#   func = 0
+#   if uncheck
+#       func = uncheck
+#   else
+#       func = check
+#   end
   prefix = "ratings_"
-  modified_list.each do |item|
-      func(prefix + item)
+  modified_list.each do |each_rating|
+      if uncheck
+          uncheck(prefix + each_rating)
+      else
+          check(prefix + each_rating)
   end  
   #add ratings_ before the element
 end
