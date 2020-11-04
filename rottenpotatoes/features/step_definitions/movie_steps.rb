@@ -80,10 +80,16 @@ end
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
   entire_html = page.body
-  occurrences = entire_html.count('<tr>')
+    
+  def count_em(string, substring)
+      string.scan(/(?=#{substring})/).count
+  end
+
+  occurrences = count_em(entire_html, "<tr>")
+#   occurrences = entire_html.count('<tr>')
 #   Movie.count.should be occurrences.to_i
 #   expect(Movie.count).to eq(occurrences) 
-    expect(Movie.count).to eq(occurrences) 
+  expect(Movie.count).to eq(occurrences) 
 
 
 #   fail "Unimplemented"
