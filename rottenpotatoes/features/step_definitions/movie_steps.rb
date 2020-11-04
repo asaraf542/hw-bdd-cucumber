@@ -33,13 +33,13 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
-When /^(?:|I )check "([^"]*)"$/ do |field|
-  check(field)
-end
+# When /^(?:|I )check "([^"]*)"$/ do |field|
+#   check(field)
+# end
 
-When /^(?:|I )uncheck "([^"]*)"$/ do |field|
-  uncheck(field)
-end
+# When /^(?:|I )uncheck "([^"]*)"$/ do |field|
+#   uncheck(field)
+# end
 
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
