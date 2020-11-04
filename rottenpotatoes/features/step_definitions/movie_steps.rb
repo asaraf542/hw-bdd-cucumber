@@ -55,5 +55,8 @@ end
 
 Then /I should see all the movies/ do
   # Make sure that all the movies in the app are visible in the table
-  fail "Unimplemented"
+  entire_html = page.body
+  occurrences = entire_html.count('<tr>')
+  Movie.count.should be occurrences.to_i
+#   fail "Unimplemented"
 end
