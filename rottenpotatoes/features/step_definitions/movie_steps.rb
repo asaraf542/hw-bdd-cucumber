@@ -33,6 +33,14 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   end
 end
 
+When /^(?:|I )check "([^"]*)"$/ do |field|
+  check(field)
+end
+
+When /^(?:|I )uncheck "([^"]*)"$/ do |field|
+  uncheck(field)
+end
+
 # Make sure that one string (regexp) occurs before or after another one
 #   on the same page
 
@@ -50,7 +58,19 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   # HINT: use String#split to split up the rating_list, then
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
-  fail "Unimplemented"
+#   fail "Unimplemented"
+  modified_list = rating_list.split(",")
+  func = 0
+  if uncheck
+      func = uncheck
+  else
+      func = check
+  end
+  prefix = "ratings_"
+  modified_list.each do |item|
+      func(item)
+  end  
+  #add ratings_ before the element
 end
 
 Then /I should see all the movies/ do
