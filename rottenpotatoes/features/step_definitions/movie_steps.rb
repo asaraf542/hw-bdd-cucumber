@@ -68,7 +68,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
   end
   prefix = "ratings_"
   modified_list.each do |item|
-      func(item)
+      func(prefix + item)
   end  
   #add ratings_ before the element
 end
