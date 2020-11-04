@@ -72,6 +72,7 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
           uncheck(prefix + each_rating)
       else
           check(prefix + each_rating)
+      end
   end  
   #add ratings_ before the element
 end
