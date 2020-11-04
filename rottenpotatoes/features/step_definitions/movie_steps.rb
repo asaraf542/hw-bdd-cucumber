@@ -47,7 +47,10 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  fail "Unimplemented"
+    entire_html = page.body
+    regexp = /#{e1}.*#{e2}/m  
+    expect(entire_html).to match(regexp)
+#   fail "Unimplemented"
 end
 
 # Make it easier to express checking or unchecking several boxes at once
@@ -89,7 +92,7 @@ Then /I should see all the movies/ do
 #   occurrences = entire_html.count('<tr>')
 #   Movie.count.should be occurrences.to_i
 #   expect(Movie.count).to eq(occurrences) 
-  expect(Movie.count).to eq(occurrences) 
+  expect(Movie.count).to eq(occurrences - 1) 
 
 
 #   fail "Unimplemented"
